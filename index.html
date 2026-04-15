@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stratokos Tech Solutions LLC — Product & Agile Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+  :root {
+    --navy: #0F1F3D;
+    --slate: #3D5A80;
+    --slate-light: #5B7FA6;
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --cream: #FAF8F4;
+    --ink: #1A1A2E;
+    --muted: #6B7280;
+    --border: rgba(61,90,128,0.15);
+    --white: #FFFFFF;
+    --section-pad: 7rem 2rem;
+  }
+ 
+  html { scroll-behavior: smooth; }
+ 
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+ 
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--slate); }
+  .nav-cta {
+    background: var(--navy) !important;
+    color: var(--cream) !important;
+    padding: 0.45rem 1.2rem;
+    border-radius: 4px;
+    font-size: 0.82rem !important;
+  }
+  .nav-cta:hover { background: var(--slate) !important; }
+ 
+  /* ── HERO ── */
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem 4rem;
+    gap: 4rem;
+  }
+  .hero-text { animation: fadeUp 0.8s ease both; }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--slate);
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--slate); }
+  .btn-outline {
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    padding: 0.85rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--navy); color: var(--cream); }
+ 
+  /* Hero visual panel */
+  .hero-visual {
+    animation: fadeUp 0.8s 0.15s ease both;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: var(--slate-light); }
+  .stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #EBF0F7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .stat-icon svg { width: 22px; height: 22px; stroke: var(--slate); fill: none; stroke-width: 1.8; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 400; }
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+ 
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 0 2rem;
+  }
+ 
+  /* ── SECTIONS COMMON ── */
+  section { padding: var(--section-pad); }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--navy);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 560px;
+    font-weight: 300;
+    margin-bottom: 3.5rem;
+  }
+ 
+  /* ── SERVICES ── */
+  #services { background: var(--white); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--slate);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.25s;
+  }
+  .service-card:hover { border-color: var(--slate-light); transform: translateY(-3px); }
+  .service-card:hover::before { transform: scaleY(1); }
+  .service-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+  }
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .service-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+  .service-deliverables {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .service-deliverables li {
+    font-size: 0.82rem;
+    color: var(--slate);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .service-deliverables li::before {
+    content: '→';
+    font-family: 'DM Mono', monospace;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 0.05em;
+  }
+  .service-rate {
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--navy);
+  }
+  .service-rate span { color: var(--muted); font-size: 0.72rem; }
+ 
+  /* ── PORTFOLIO / CASE STUDIES ── */
+  #work { background: var(--cream); }
+  .cases-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .case-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: border-color 0.25s;
+  }
+  .case-card:hover { border-color: var(--slate-light); }
+  .case-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+  .case-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: #EBF0F7;
+    color: #1B2B4B;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .case-org {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .case-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .case-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+  .case-results {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+  }
+  .case-result-item { text-align: center; }
+  .case-result-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--slate);
+    display: block;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .case-result-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+ 
+  /* ── APPROACH ── */
+  #approach { background: var(--navy); }
+  #approach .section-title { color: var(--cream); }
+  #approach .section-sub { color: rgba(250,248,244,0.6); }
+  #approach .section-tag { color: var(--gold); }
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .approach-step {
+    background: var(--navy);
+    padding: 2rem 1.5rem;
+    transition: background 0.2s;
+  }
+  .approach-step:hover { background: #1a2e52; }
+  .approach-step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .approach-step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+  }
+  .approach-step-desc {
+    font-size: 0.85rem;
+    color: rgba(250,248,244,0.55);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+ 
+  /* ── CREDENTIALS ── */
+  #credentials { background: var(--white); }
+  .creds-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+  .cred-group { margin-bottom: 2rem; }
+  .cred-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .cert-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.88rem;
+    color: var(--ink);
+    padding: 0.6rem 0;
+  }
+  .cert-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--slate);
+    flex-shrink: 0;
+  }
+  .expertise-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .expertise-tag {
+    font-size: 0.82rem;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--navy);
+    background: var(--cream);
+    transition: all 0.2s;
+  }
+  .expertise-tag:hover { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: var(--border);
+  }
+  .timeline-item {
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -3px; top: 8px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--slate);
+    border: 2px solid var(--white);
+  }
+  .timeline-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.2rem;
+  }
+  .timeline-role { font-size: 0.95rem; font-weight: 500; color: var(--navy); margin-bottom: 0.1rem; }
+  .timeline-co { font-size: 0.82rem; color: var(--muted); }
+ 
+  /* ── CONTACT ── */
+  #contact { background: var(--cream); }
+  .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 0.95rem;
+    transition: color 0.2s;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--white);
+  }
+  .contact-link:hover { border-color: var(--slate); color: var(--slate); }
+  .contact-link-icon {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    background: #EBF0F7;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .contact-link-icon svg { width: 18px; height: 18px; stroke: var(--slate); fill: none; stroke-width: 1.8; }
+  .contact-form-wrap {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    background: var(--cream);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--slate); background: var(--white); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    width: 100%;
+    background: var(--navy);
+    color: var(--cream);
+    padding: 0.85rem;
+    border: none;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: background 0.2s;
+  }
+  .form-submit:hover { background: var(--slate); }
+ 
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 2.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    color: var(--cream);
+    font-size: 1rem;
+  }
+  .footer-copy { font-size: 0.78rem; color: rgba(250,248,244,0.4); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.78rem; color: rgba(250,248,244,0.5); text-decoration: none; }
+  .footer-links a:hover { color: var(--cream); }
+ 
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+ 
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 4rem; }
+    .hero-visual { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: 1fr 1fr; }
+    .creds-layout, .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .nav-links { gap: 1rem; }
+  }
+  @media (max-width: 640px) {
+    .approach-grid { grid-template-columns: 1fr; }
+    :root { --section-pad: 5rem 1.25rem; }
+    .hero { padding: 3rem 1.25rem; }
+    nav { padding: 0 1.25rem; }
+    .nav-links .hide-sm { display: none; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+ 
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Stratokos Tech Solutions LLC</a>
+  <div class="nav-links">
+    <a href="#services" class="hide-sm">Services</a>
+    <a href="#work" class="hide-sm">Work</a>
+    <a href="#credentials" class="hide-sm">About</a>
+    <a href="#contact" class="nav-cta">Let's Talk</a>
+  </div>
+</nav>
+ 
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Product &amp; Agile Consulting</p>
+    <h1>Build better products.<br><em>Ship with confidence.</em></h1>
+    <p class="hero-desc">Senior product manager and agile coach with 10+ years turning cross-functional chaos into coherent, high-performing teams — across SaaS, enterprise, B2B, and digital platforms.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start a conversation</a>
+      <a href="#work" class="btn-outline">See case studies</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="stat-card">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div>
+        <div class="stat-num">35%</div>
+        <div class="stat-label">average platform adoption increase</div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div>
+          <div class="stat-num">40%</div>
+          <div class="stat-label">reduction in manual processes</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div>
+          <div class="stat-num">25%</div>
+          <div class="stat-label">faster time-to-market</div>
+        </div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div>
+        <div class="stat-num">8+</div>
+        <div class="stat-label">cross-functional teams coached simultaneously</div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<div class="divider"></div>
+ 
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <p class="section-tag reveal">What I do</p>
+    <h2 class="section-title reveal">Services built for<br>where you actually are</h2>
+    <p class="section-sub reveal">Every engagement starts with your specific situation — not a template. Here are the three ways most clients work with me.</p>
+ 
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01</div>
+        <h3 class="service-title">Fractional Product Manager</h3>
+        <p class="service-desc">Embedded product leadership for teams that need a senior PM without the full-time hire. I own the roadmap, run discovery, and ship — as a true member of your team.</p>
+        <ul class="service-deliverables">
+          <li>Product strategy &amp; roadmap ownership</li>
+          <li>Discovery, user research &amp; prioritization</li>
+          <li>Backlog management (RICE, MoSCoW)</li>
+          <li>Stakeholder alignment &amp; exec reporting</li>
+          <li>Go-to-market execution &amp; launch</li>
+        </ul>
+        <div class="service-rate">$8,000 – $15,000 / month <span>· 10–20 hrs/week</span></div>
+      </div>
+ 
+      <div class="service-card reveal">
+        <div class="service-num">02</div>
+        <h3 class="service-title">Agile Coach &amp; Team Enablement</h3>
+        <p class="service-desc">Hands-on transformation coaching for product and engineering teams. I assess where you are, close the gaps, and build lasting capability — not dependency on a coach.</p>
+        <ul class="service-deliverables">
+          <li>Agile maturity assessment &amp; roadmap</li>
+          <li>Scrum, Kanban, SAFe implementation</li>
+          <li>Sprint health &amp; velocity improvement</li>
+          <li>Retrospective &amp; ceremony redesign</li>
+          <li>Team &amp; leadership Agile training</li>
+        </ul>
+        <div class="service-rate">$6,000 – $12,000 / month <span>· engagement-based</span></div>
+      </div>
+ 
+      <div class="service-card reveal">
+        <div class="service-num">03</div>
+        <h3 class="service-title">Product Audit &amp; Sprint</h3>
+        <p class="service-desc">A focused 4–8 week engagement with a clear deliverable. Best for teams that need momentum fast — a roadmap, a discovery sprint, or a delivery process overhaul.</p>
+        <ul class="service-deliverables">
+          <li>Product &amp; delivery process audit</li>
+          <li>Roadmap build or reset</li>
+          <li>Discovery sprint facilitation</li>
+          <li>OKR framework design</li>
+          <li>Exec presentation &amp; recommendation deck</li>
+        </ul>
+        <div class="service-rate">$10,000 – $25,000 <span>· fixed scope</span></div>
+      </div>
+    </div>
+ 
+    <div style="margin-top:2rem; padding: 1.5rem 2rem; background: #EBF0F7; border-radius: 10px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;" class="reveal">
+      <div>
+        <p style="font-size:0.82rem; color:#1B2B4B; font-weight:500; margin-bottom:3px;">Not sure which fits?</p>
+        <p style="font-size:0.82rem; color:#6B7280; font-weight:300;">Start with a 90-minute strategy session to map out the right approach for your team.</p>
+      </div>
+      <a href="#contact" style="font-size:0.85rem; font-weight:500; color:#3D5A80; text-decoration:none; white-space:nowrap;">Book a strategy call →</a>
+    </div>
+  </div>
+</section>
+ 
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="section-inner">
+    <p class="section-tag reveal">Case studies</p>
+    <h2 class="section-title reveal">Problems solved,<br>results measured</h2>
+    <p class="section-sub reveal">Every project below is a real engagement with real outcomes. Details anonymized where necessary.</p>
+ 
+    <div class="cases-grid">
+      <div class="case-card reveal">
+        <div class="case-header">
+          <span class="case-tag">Product Management</span>
+          <span class="case-org">Enterprise SaaS · Bloomberg Industry Group</span>
+        </div>
+        <h3 class="case-title">Rebuilding a stalled enterprise platform from the inside out</h3>
+        <p class="case-desc">Inherited a 500-user Salesforce platform with low adoption, fragmented backlogs, and no clear roadmap. Led discovery, restructured prioritization, and executed a 15-month feature roadmap that transformed the platform into a tool teams actually wanted to use.</p>
+        <div style="margin-bottom:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">Salesforce</span>
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">RICE Prioritization</span>
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">User Research</span>
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">OKRs</span>
+        </div>
+        <div class="case-results">
+          <div class="case-result-item">
+            <span class="case-result-num">35%</span>
+            <span class="case-result-label">adoption increase</span>
+          </div>
+          <div class="case-result-item">
+            <span class="case-result-num">40%</span>
+            <span class="case-result-label">less manual work</span>
+          </div>
+          <div class="case-result-item">
+            <span class="case-result-num">10+</span>
+            <span class="case-result-label">features shipped</span>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="case-card reveal">
+        <div class="case-header">
+          <span class="case-tag">Agile Coaching</span>
+          <span class="case-org">Multi-team delivery · Bloomberg Industry Group</span>
+        </div>
+        <h3 class="case-title">Scaling predictable delivery across 8 engineering teams</h3>
+        <p class="case-desc">Eight teams, four product lines, and a VP who needed reliable delivery forecasts. Built a metrics dashboard system and redesigned retrospectives to generate real action — resulting in measurably higher throughput and a 0-to-one delivery culture in under 12 months.</p>
+        <div style="margin-bottom:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">Scrum</span>
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">Jira / Confluence</span>
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">Delivery Metrics</span>
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">Executive Reporting</span>
+        </div>
+        <div class="case-results">
+          <div class="case-result-item">
+            <span class="case-result-num">20%</span>
+            <span class="case-result-label">throughput gain</span>
+          </div>
+          <div class="case-result-item">
+            <span class="case-result-num">8</span>
+            <span class="case-result-label">teams coached</span>
+          </div>
+          <div class="case-result-item">
+            <span class="case-result-num">12mo</span>
+            <span class="case-result-label">to transformation</span>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="case-card reveal">
+        <div class="case-header">
+          <span class="case-tag">Agile Coaching</span>
+          <span class="case-org">B2B SaaS · Beacon Hill (Contract)</span>
+        </div>
+        <h3 class="case-title">Accelerating a stuck delivery team from bottleneck to flow</h3>
+        <p class="case-desc">A high-traffic B2B platform team consistently missed sprint commitments. In a 4-month engagement, rebuilt delivery practices around continuous flow metrics, eliminated recurring blockers, and rebuilt trust between product and engineering.</p>
+        <div style="margin-bottom:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">Kanban</span>
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">Flow Metrics</span>
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">Stakeholder Alignment</span>
+        </div>
+        <div class="case-results">
+          <div class="case-result-item">
+            <span class="case-result-num">25%</span>
+            <span class="case-result-label">faster time-to-market</span>
+          </div>
+          <div class="case-result-item">
+            <span class="case-result-num">4mo</span>
+            <span class="case-result-label">engagement length</span>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="case-card reveal">
+        <div class="case-header">
+          <span class="case-tag">Multi-Industry Coaching</span>
+          <span class="case-org">Sande Consulting · 4 years</span>
+        </div>
+        <h3 class="case-title">Building Agile cultures that outlast the coach</h3>
+        <p class="case-desc">Four years embedded across enterprise, SaaS, and regulated-industry product teams. Each engagement began with a maturity assessment and ended with teams operating independently — self-organizing, metrics-aware, and capable of continuous improvement without an external coach.</p>
+        <div style="margin-bottom:1rem; display:flex; flex-wrap:wrap; gap:0.4rem;">
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">Scrum / Kanban / SAFe</span>
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">Team Enablement</span>
+          <span style="font-size:0.75rem; padding:2px 9px; border-radius:20px; border:1px solid #d1dae8; color:#3D5A80;">Org Transformation</span>
+        </div>
+        <div class="case-results">
+          <div class="case-result-item">
+            <span class="case-result-num">20%</span>
+            <span class="case-result-label">release cadence gain</span>
+          </div>
+          <div class="case-result-item">
+            <span class="case-result-num">Multi</span>
+            <span class="case-result-label">industries served</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- APPROACH -->
+<section id="approach">
+  <div class="section-inner">
+    <p class="section-tag reveal">How I work</p>
+    <h2 class="section-title reveal">A framework, not a formula</h2>
+    <p class="section-sub reveal">Every engagement is different. But the way I think about the work is consistent — diagnose before prescribing, measure what matters, and leave teams stronger than I found them.</p>
+ 
+    <div class="approach-grid reveal">
+      <div class="approach-step">
+        <div class="approach-step-num">01 · Diagnose</div>
+        <h3 class="approach-step-title">Understand before prescribing</h3>
+        <p class="approach-step-desc">Spend the first week in listening mode. Talk to stakeholders, review the backlog, sit in ceremonies. No recommendations until the actual problem is clear — not the stated one.</p>
+      </div>
+      <div class="approach-step">
+        <div class="approach-step-num">02 · Focus</div>
+        <h3 class="approach-step-title">Pick the right lever</h3>
+        <p class="approach-step-desc">Most team problems have one root cause driving ten symptoms. Find that cause — whether it's unclear ownership, missing data, or broken stakeholder trust — and fix it first.</p>
+      </div>
+      <div class="approach-step">
+        <div class="approach-step-num">03 · Deliver</div>
+        <h3 class="approach-step-title">Move fast with discipline</h3>
+        <p class="approach-step-desc">Bias toward action. Ship small, measure early, iterate. Every output — roadmap, sprint, training — is tied to a measurable outcome so we know if it's working.</p>
+      </div>
+      <div class="approach-step">
+        <div class="approach-step-num">04 · Enable</div>
+        <h3 class="approach-step-title">Build lasting capability</h3>
+        <p class="approach-step-desc">The goal is a team that doesn't need me. Every engagement ends with documentation, handoff, and coaching so improvements compound after I'm gone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="section-inner">
+    <p class="section-tag reveal">Background</p>
+    <h2 class="section-title reveal">10+ years of product<br>and delivery leadership</h2>
+    <p class="section-sub reveal">The combination of full product ownership and deep Agile coaching expertise is genuinely rare. Most PMs have never coached a team. Most coaches have never owned a roadmap.</p>
+ 
+    <div class="creds-layout reveal">
+      <div>
+        <div class="cred-group">
+          <div class="cred-group-title">Certifications</div>
+          <div class="cert-list">
+            <div class="cert-item"><span class="cert-dot"></span>CSPO — Certified Scrum Product Owner</div>
+            <div class="cert-item"><span class="cert-dot"></span>PSM I — Professional Scrum Master</div>
+            <div class="cert-item"><span class="cert-dot"></span>ICP-ACC — Agile Certified Coach</div>
+            <div class="cert-item"><span class="cert-dot"></span>ICP-ENT — Enterprise Agile Coaching</div>
+            <div class="cert-item"><span class="cert-dot"></span>PMP — Project Management Professional</div>
+            <div class="cert-item"><span class="cert-dot"></span>Google Data Analytics Certificate</div>
+            <div class="cert-item"><span class="cert-dot"></span>Product Management AI Certification</div>
+          </div>
+        </div>
+ 
+        <div class="cred-group">
+          <div class="cred-group-title">Tools &amp; methods</div>
+          <div class="expertise-tags">
+            <span class="expertise-tag">Jira</span>
+            <span class="expertise-tag">Azure DevOps</span>
+            <span class="expertise-tag">Confluence</span>
+            <span class="expertise-tag">Miro</span>
+            <span class="expertise-tag">Figma</span>
+            <span class="expertise-tag">ProductBoard</span>
+            <span class="expertise-tag">Salesforce</span>
+            <span class="expertise-tag">Tableau</span>
+            <span class="expertise-tag">Amplitude</span>
+            <span class="expertise-tag">SQL</span>
+            <span class="expertise-tag">Scrum</span>
+            <span class="expertise-tag">Kanban</span>
+            <span class="expertise-tag">SAFe</span>
+            <span class="expertise-tag">OKRs</span>
+          </div>
+        </div>
+ 
+        <div class="cred-group" style="margin-top:1.5rem;">
+          <div class="cred-group-title">Education</div>
+          <div class="cert-item"><span class="cert-dot"></span>BA, Public Health — American University, Washington D.C.</div>
+        </div>
+      </div>
+ 
+      <div>
+        <div class="cred-group-title" style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);">Career timeline</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2023 – 2025</div>
+            <div class="timeline-role">Product Manager, Revenue Platform</div>
+            <div class="timeline-co">Bloomberg Industry Group</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2022 – 2023</div>
+            <div class="timeline-role">Product Delivery Lead · Senior Scrum Master</div>
+            <div class="timeline-co">Bloomberg Industry Group</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2022</div>
+            <div class="timeline-role">Senior Agile Coach · Scrum Master</div>
+            <div class="timeline-co">Beacon Hill Staffing (Contract)</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2018 – 2022</div>
+            <div class="timeline-role">Agile Coach · Scrum Master</div>
+            <div class="timeline-co">Sande Consulting</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Earlier</div>
+            <div class="timeline-role">Program &amp; Operations Leadership</div>
+            <div class="timeline-co">RTI International · DC Govt · NGOs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-tag reveal">Get in touch</p>
+    <h2 class="section-title reveal">Ready to talk about<br>your team's challenges?</h2>
+    <p class="section-sub reveal">Most engagements start with a 30-minute discovery call — no commitment, no pitch. Just a conversation about where you are and whether I can help.</p>
+ 
+    <div class="contact-layout reveal">
+      <div class="contact-info">
+        <a href="mailto:yourname@email.com" class="contact-link">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:500; margin-bottom:2px;">Email</div>
+            <div style="font-size:0.83rem; color:var(--muted);">yourname@email.com</div>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" class="contact-link">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:500; margin-bottom:2px;">LinkedIn</div>
+            <div style="font-size:0.83rem; color:var(--muted);">linkedin.com/in/yourprofile</div>
+          </div>
+        </a>
+        <a href="tel:2025550000" class="contact-link">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:500; margin-bottom:2px;">Phone</div>
+            <div style="font-size:0.83rem; color:var(--muted);">(202) 555-0000</div>
+          </div>
+        </a>
+ 
+        <div style="padding:1.25rem; background:var(--white); border:1px solid var(--border); border-radius:10px;">
+          <p style="font-size:0.82rem; font-weight:500; color:var(--navy); margin-bottom:6px;">Washington, D.C. Metro Area</p>
+          <p style="font-size:0.82rem; color:var(--muted); line-height:1.6; font-weight:300;">Available for remote engagements nationwide and in-person in the DC / MD / VA area. Open to both project-based and ongoing retainer arrangements.</p>
+        </div>
+      </div>
+ 
+      <div class="contact-form-wrap">
+        <p class="form-title">Send a message</p>
+        <form onsubmit="handleSubmit(event)">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div class="form-group">
+              <label>First name</label>
+              <input type="text" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label>Last name</label>
+              <input type="text" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Work email</label>
+            <input type="email" placeholder="jane@company.com" required>
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Acme Corp">
+          </div>
+          <div class="form-group">
+            <label>I'm interested in</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Fractional Product Manager</option>
+              <option>Agile Coach &amp; Team Enablement</option>
+              <option>Product Audit &amp; Sprint</option>
+              <option>Strategy call first</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tell me about your challenge</label>
+            <textarea placeholder="What's the problem you're trying to solve? What does success look like?" required></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submit-btn">Send message</button>
+        </form>
+        <div id="form-success" style="display:none; text-align:center; padding:2rem; color:var(--slate);">
+          <p style="font-size:1.1rem; font-weight:500; margin-bottom:0.5rem;">Message sent!</p>
+          <p style="font-size:0.88rem; color:var(--muted);">I'll be in touch within one business day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Your Name · Consulting</span>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#work">Work</a>
+    <a href="#credentials">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <span class="footer-copy">&copy; 2026 · Washington, D.C.</span>
+</footer>
+ 
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => obs.observe(el));
+ 
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    setTimeout(() => {
+      e.target.style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }, 900);
+  }
+ 
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
